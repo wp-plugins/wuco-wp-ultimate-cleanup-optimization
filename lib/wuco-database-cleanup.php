@@ -241,14 +241,14 @@ class wucoDatabaseCleanup {
         }
 
         if(!empty($_REQUEST['comment_pingback'])){
-            $result = $wpdb->query("DELETE FROM $wpdb->comments comment_type = 'pingback'");
+            $result = $wpdb->query("DELETE FROM $wpdb->comments WHERE comment_type = 'pingback'");
             $deleted['total'] += $result;
             $deleted['comment'] += $result;
             $deleted['comment_pingback'] += $result;
         }
 
         if(!empty($_REQUEST['comment_trackback'])){
-            $result = $wpdb->query("DELETE FROM $wpdb->comments comment_type = 'trackback'");
+            $result = $wpdb->query("DELETE FROM $wpdb->comments WHERE comment_type = 'trackback'");
             $deleted['total'] += $result;
             $deleted['comment'] += $result;
             $deleted['comment_trackback'] += $result;
@@ -269,7 +269,7 @@ class wucoDatabaseCleanup {
         }
 
         if(!empty($_REQUEST['transient'])){
-            $result = $wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_%' OR option_name LIKE '_site_transient_%'");
+            $result = $wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '_site_transient_browser_%' OR option_name LIKE '_site_transient_timeout_browser_%' OR option_name LIKE '_transient_feed_%' OR option_name LIKE '_transient_timeout_feed_%'");
             $deleted['total'] += $result;
             $deleted['other'] += $result;
             $deleted['transient'] += $result;
@@ -347,7 +347,7 @@ class wucoDatabaseCleanup {
                 break;
 
             case 'transient':
-                $number = $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->options WHERE option_name LIKE '_transient_%' OR option_name LIKE '_site_transient_%'");
+                $number = $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->options WHERE option_name LIKE '_site_transient_browser_%' OR option_name LIKE '_site_transient_timeout_browser_%' OR option_name LIKE '_transient_feed_%' OR option_name LIKE '_transient_timeout_feed_%'");
                 break;
         }
 

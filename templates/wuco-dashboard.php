@@ -1,6 +1,6 @@
 <div class="wrap wuco-wrap wuco-dashboard">
 
-    <h2><?php _e('WUCO - WP Ultimate Cleanup & Optimization', 'wuco'); ?></h2>
+    <h2><?php _e('WUCO - WordPress Ultimate Cleanup & Optimization', 'wuco'); ?></h2>
 
     <?php wuco_message_updated(); ?>
 

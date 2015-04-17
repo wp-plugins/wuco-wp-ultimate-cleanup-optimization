@@ -44,6 +44,7 @@
   height: 24px;
   line-height: 24px;
   text-align: center;
+  font-size: 10px;
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   border-radius: 100%;
@@ -101,6 +102,7 @@
   width: 36px;
   height: 36px;
   line-height: 36px;
+  font-size: 1em;
 }
 .wuco-checkbox-list > li > ul {
   border-top: 1px solid rgba(0, 0, 0, 0.08);

@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: WUCO - WP Ultimate Cleanup & Optimization
+ * Plugin Name: WUCO - WordPress Ultimate Cleanup & Optimization
  * Description: Cleans up your database removing the useless entries such as post revisions, spam comments, orphaned meta, transient data, etc.
- * Version: 1.0.0
+ * Version: 1.1
  * Author: pranacoder
  * License: GPL3
  */
