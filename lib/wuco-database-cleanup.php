@@ -19,7 +19,7 @@ class wucoDatabaseCleanup {
                         'id' => 'post_revision',
                         'name_singular' => __('revision', 'wuco'),
                         'name_plural' => __('revisions', 'wuco'),
-                        'descr' => __('Records of each saved draft or published update', 'wuco')
+                        'descr' => __('Records of each saved draft or published update', 'wuco'),
                     ),
                     array(
                         'id' => 'post_draft',
@@ -189,6 +189,24 @@ class wucoDatabaseCleanup {
         global $wpdb;
         $deleted = array('total' => 0);
 
+
+        // Cleaning up the meta
+
+        if(!empty($_REQUEST['meta_post'])){
+            $result = $wpdb->query("DELETE meta FROM $wpdb->postmeta meta LEFT JOIN $wpdb->posts posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL");
+            $deleted['total'] += $result;
+            $deleted['meta'] += $result;
+            $deleted['meta_post'] += $result;
+        }
+
+        if(!empty($_REQUEST['meta_comment'])){
+            $result = $wpdb->query("DELETE meta FROM $wpdb->commentmeta meta LEFT JOIN $wpdb->comments comments ON comments.comment_ID = meta.comment_id WHERE comments.comment_ID IS NULL");
+            $deleted['total'] += $result;
+            $deleted['meta'] += $result;
+            $deleted['meta_comment'] += $result;
+        }
+
+
         // Cleaning up the posts
 
         if(!empty($_REQUEST['post_revision'])){
@@ -218,6 +236,9 @@ class wucoDatabaseCleanup {
             $deleted['post'] += $result;
             $deleted['post_trash'] += $result;
         }
+
+
+        // Cleaning up the comments
 
         if(!empty($_REQUEST['comment_spam'])){
             $result = $wpdb->query("DELETE FROM $wpdb->comments WHERE comment_approved = 'spam'");
@@ -254,19 +275,8 @@ class wucoDatabaseCleanup {
             $deleted['comment_trackback'] += $result;
         }
 
-        if(!empty($_REQUEST['meta_post'])){
-            $result = $wpdb->query("DELETE meta FROM $wpdb->postmeta meta LEFT JOIN $wpdb->posts posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL");
-            $deleted['total'] += $result;
-            $deleted['meta'] += $result;
-            $deleted['meta_post'] += $result;
-        }
 
-        if(!empty($_REQUEST['meta_comment'])){
-            $result = $wpdb->query("DELETE meta FROM $wpdb->commentmeta meta LEFT JOIN $wpdb->comments comments ON comments.comment_ID = meta.comment_id WHERE comments.comment_ID IS NULL");
-            $deleted['total'] += $result;
-            $deleted['meta'] += $result;
-            $deleted['meta_comment'] += $result;
-        }
+        // Cleaning up miscellaneous data
 
         if(!empty($_REQUEST['transient'])){
             $result = $wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '_site_transient_browser_%' OR option_name LIKE '_site_transient_timeout_browser_%' OR option_name LIKE '_transient_feed_%' OR option_name LIKE '_transient_timeout_feed_%'");
@@ -274,6 +284,16 @@ class wucoDatabaseCleanup {
             $deleted['other'] += $result;
             $deleted['transient'] += $result;
         }
+
+
+        // Deleting posts and comments directly from the database may leave orphaned meta.
+        // We have to delete it as well, but we need to do it separately from deleting the rest of the meta trash as if it never existed.
+        if($deleted['post'] > 0)
+            $wpdb->query("DELETE meta FROM $wpdb->postmeta meta LEFT JOIN $wpdb->posts posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL");
+
+        if($deleted['comment'] > 0)
+            $wpdb->query("DELETE meta FROM $wpdb->commentmeta meta LEFT JOIN $wpdb->comments comments ON comments.comment_ID = meta.comment_id WHERE comments.comment_ID IS NULL");
+
 
         $this->updateInfo($deleted);
 
@@ -292,7 +312,7 @@ class wucoDatabaseCleanup {
         if(empty($doneLastTotal))
             return false;
 
-        $message = sprintf(__('Great job! You have successfully cleaned out %d entries from your database'), $doneLastTotal);
+        $message = sprintf(__('Great job! You have successfully cleaned out <b>%d</b> entries from your database'), $doneLastTotal);
         return $message;
     }
 

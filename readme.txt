@@ -1,13 +1,13 @@
-=== WUCO - WordPress Ultimate Cleanup & Optimization ===
+=== WUCO - WP Ultimate Cleanup & Optimization ===
 Contributors: pranacoder
-Tags: cleanup, clean up, database, optimization
+Tags: cleanup, clean up, database, optimize, database size, MySQL, delete revision, performance, cleaner, optimizer, optimization tool, DB, unused
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0-standalone.html
 Requires at least: 4.0
 Tested up to: 4.1.1
-Stable tag: 1.1
+Stable tag: 1.2
 
-WUCO aka WordPress Ultimate Cleanup & Optimization, an easy to use yet effective plugin designed to help you keep your MySQL database clean.
+WUCO aka WP Ultimate Cleanup & Optimization, an easy to use yet effective plugin designed to help you keep your MySQL database clean.
 
 == Description ==
 WordPress stores a lot of excess information in your DB (like post revisions, auto drafts, spam and trashed comments, transient site options, etc.).
@@ -31,3 +31,7 @@ Using WUCO you can easily and safely clean up your database from those useless e
 * Fixed: Bug with deleting pingbacks and trackbacks
 * Tweak: Slightly modified query for displaying and deleting transient data
 * Tweak: Minor CSS changes
+
+= 1.2: April 21, 2015 =
+
+* Fixed: Leaving orphaned meta when deleting posts and comments
