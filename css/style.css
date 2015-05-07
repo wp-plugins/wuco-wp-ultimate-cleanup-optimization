@@ -5,11 +5,17 @@
 }
 .wuco-wrap .wuco-main {
   width: 60%;
+  float: left;
 }
 @media only screen and (max-width:1024px) {
   .wuco-wrap .wuco-main {
     width: 100%;
   }
+}
+.wuco-wrap .wuco-sidebar {
+  width: 37.5%;
+  margin-left: 2.5%;
+  float: left;
 }
 .wuco-wrap .collapse-handle {
   font: normal 20px/1 'dashicons';
@@ -35,6 +41,22 @@
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+}
+.wuco-wrap table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.wuco-wrap table th,
+.wuco-wrap table td {
+  text-align: left;
+  padding: 6px;
+}
+.wuco-wrap table.table-striped tr:nth-child(odd) td {
+  background: rgba(0, 0, 0, 0.04);
+}
+.wuco-wrap .dashicons {
+  color: rgba(0, 0, 0, 0.2);
 }
 .wuco-badge {
   color: #ffffff;
@@ -134,10 +156,16 @@
   padding-top: 16px;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
-.wuco-admin-widget .wuco-admin-widget-actions {
+.wuco-admin-widget .wuco-admin-widget-controls {
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.wuco-admin-widget .wuco-admin-widget-controls .alignright button {
+  margin-left: 12px;
+}
+.wuco-admin-widget .wuco-admin-widget-controls .alignright span {
+  line-height: 30px;
 }
 #wuco-admin-widget-database_cleanup .display-table > div {
   width: 48px;
@@ -146,4 +174,20 @@
   width: auto;
   text-align: left;
   padding-left: 12px;
+}
+#wuco-admin-widget-plugin_status table {
+  margin-top: 16px;
+}
+#wuco-admin-widget-plugin_status table:first-child {
+  margin-top: 0;
+}
+#wuco-admin-widget-plugin_status .table-striped th,
+#wuco-admin-widget-plugin_status .table-striped td {
+  width: 25%;
+  text-align: center;
+}
+#wuco-admin-widget-plugin_status .table-striped th:first-child,
+#wuco-admin-widget-plugin_status .table-striped td:first-child {
+  width: 50%;
+  text-align: left;
 }
