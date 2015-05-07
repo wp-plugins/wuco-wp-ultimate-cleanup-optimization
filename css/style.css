@@ -1,0 +1,193 @@
+.wuco-wrap * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.wuco-wrap .wuco-main {
+  width: 60%;
+  float: left;
+}
+@media only screen and (max-width:1024px) {
+  .wuco-wrap .wuco-main {
+    width: 100%;
+  }
+}
+.wuco-wrap .wuco-sidebar {
+  width: 37.5%;
+  margin-left: 2.5%;
+  float: left;
+}
+.wuco-wrap .collapse-handle {
+  font: normal 20px/1 'dashicons';
+  speak: none;
+  display: inline-block;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration: none !important;
+  display: none;
+}
+.wuco-wrap .collapse-handle:before {
+  content: '\f142';
+}
+.wuco-wrap .closed .collapse-handle:before {
+  content: '\f140';
+}
+.wuco-wrap .display-table {
+  display: table;
+  width: 100%;
+}
+.wuco-wrap .display-table > * {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.wuco-wrap table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.wuco-wrap table th,
+.wuco-wrap table td {
+  text-align: left;
+  padding: 6px;
+}
+.wuco-wrap table.table-striped tr:nth-child(odd) td {
+  background: rgba(0, 0, 0, 0.04);
+}
+.wuco-wrap .dashicons {
+  color: rgba(0, 0, 0, 0.2);
+}
+.wuco-badge {
+  color: #ffffff;
+  background: #dd3d36;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-size: 10px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+.wuco-badge.empty {
+  background: rgba(0, 0, 0, 0.08);
+}
+.wuco-red {
+  background: #dd3d36;
+}
+.wuco-green {
+  background: #7ad03a;
+}
+.wuco-grey {
+  background: rgba(0, 0, 0, 0.08);
+}
+.wuco-orange {
+  background: #d54e21;
+}
+.wuco-row {
+  display: inline-block;
+}
+.wuco-row:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+* html .wuco-row {
+  height: 1%;
+}
+.wuco-row {
+  display: block;
+}
+.wuco-checkbox-list {
+  margin: 0;
+}
+.wuco-checkbox-list > li {
+  background: #ffffff;
+  margin-bottom: 16px;
+  position: relative;
+}
+.wuco-checkbox-list > li > div,
+.wuco-checkbox-list > li > ul {
+  padding: 12px;
+}
+.wuco-checkbox-list > li > div .collapse-handle {
+  display: none;
+}
+.js .wuco-checkbox-list > li > div .collapse-handle {
+  display: table-cell;
+}
+.wuco-checkbox-list > li > div .wuco-badge {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 1em;
+}
+.wuco-checkbox-list > li > ul {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.wuco-checkbox-list > li > ul li {
+  margin-bottom: 12px;
+}
+.wuco-checkbox-list > li > ul li:last-child {
+  margin-bottom: 0;
+}
+.wuco-checkbox-list p {
+  margin-bottom: 0;
+}
+.wuco-admin-widget h4,
+.wuco-admin-widget h5 {
+  margin: 0;
+}
+.wuco-admin-widget h4 {
+  font-size: 1.2em;
+}
+.wuco-admin-widget h5 {
+  font-size: 1.1em;
+}
+.wuco-admin-widget .wuco-admin-widget-header h3 {
+  margin-bottom: 0;
+}
+.wuco-admin-widget .wuco-admin-widget-content {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.wuco-admin-widget .wuco-admin-widget-controls {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.wuco-admin-widget .wuco-admin-widget-controls .alignright button {
+  margin-left: 12px;
+}
+.wuco-admin-widget .wuco-admin-widget-controls .alignright span {
+  line-height: 30px;
+}
+#wuco-admin-widget-database_cleanup .display-table > div {
+  width: 48px;
+}
+#wuco-admin-widget-database_cleanup .display-table .name {
+  width: auto;
+  text-align: left;
+  padding-left: 12px;
+}
+#wuco-admin-widget-plugin_status table {
+  margin-top: 16px;
+}
+#wuco-admin-widget-plugin_status table:first-child {
+  margin-top: 0;
+}
+#wuco-admin-widget-plugin_status .table-striped th,
+#wuco-admin-widget-plugin_status .table-striped td {
+  width: 25%;
+  text-align: center;
+}
+#wuco-admin-widget-plugin_status .table-striped th:first-child,
+#wuco-admin-widget-plugin_status .table-striped td:first-child {
+  width: 50%;
+  text-align: left;
+}
